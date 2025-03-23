@@ -62,6 +62,7 @@ const router = createRouter({
   scrollRestoration: true,
   defaultStructuralSharing: true,
   defaultPreloadStaleTime: 0,
+  basepath: "/epm-react-challenge",
 });
 
 const rootElement = document.getElementById("app");
