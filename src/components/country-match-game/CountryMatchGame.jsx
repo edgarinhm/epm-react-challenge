@@ -42,9 +42,8 @@ export const CountryMatchGame = () => {
   const handleClickedOption = (option) => {
     if (selectedOptions.length === 2) {
       setSelectedOptions([]);
-    } else {
-      setSelectedOptions((state) => [...state, option]);
     }
+    setSelectedOptions((state) => [...state, option]);
     if (selectedOptions.length === 1) {
       const [option1] = selectedOptions;
       validateMatch(option1, option);
@@ -118,8 +117,6 @@ export const CountryMatchGame = () => {
           </button>
         </div>
       ))}
-
-      <pre>{JSON.stringify(selectedOptions)}</pre>
     </div>
   );
 };
