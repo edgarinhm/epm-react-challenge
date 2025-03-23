@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useMemo, useState } from "react";
 
 const data = {
@@ -27,17 +28,16 @@ const data = {
   Jamaica: "Kingston",
   Haiti: "Port-au-Prince",
 };
-export const CountryMatchGame = () => {
-  const sortOptions = useMemo(
-    () =>
-      Object.entries(data)
-        .flat()
-        .sort(() => Math.random() - 0.5),
-    []
-  );
 
+export const CountryMatchGame = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [validMath, setValidMath] = useState([]);
+
+  const [options, setOptions] = useState(
+    Object.entries(data)
+      .flat()
+      .sort(() => Math.random() - 0.5)
+  );
 
   const handleClickedOption = (option) => {
     if (selectedOptions.length === 2) {
@@ -91,6 +91,20 @@ export const CountryMatchGame = () => {
     }
   };
 
+  useEffect(() => {
+    const filterValidOptions = (state) => {
+      return state.filter((option) => !validMath.includes(option));
+    };
+
+    const timeout = setTimeout(() => {
+      setOptions((state) => [...filterValidOptions(state)]);
+    }, 10000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [validMath]);
+
   return (
     <div
       style={{
@@ -101,7 +115,7 @@ export const CountryMatchGame = () => {
         justifyContent: "center",
       }}
     >
-      {sortOptions.map((option) => (
+      {options.map((option) => (
         <div style={{ display: "flex", gap: "0.5rem" }} key={option}>
           <button
             style={{
