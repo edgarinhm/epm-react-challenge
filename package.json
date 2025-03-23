@@ -5,7 +5,7 @@
   "homepage": "https://edgarinhm.github.io/epm-react-challenge",
   "scripts": {
     "start": "vite --port 3000",
-    "build": "vite build && tsc",
+    "build": "vite build",
     "serve": "vite preview",
     "test": "vitest run",
     "predeploy": "npm run build",

@@ -4,12 +4,13 @@ import { SideBar } from "./SideBar";
 
 export const Layout = () => {
   return (
-    <main>
+    <main className="main-container">
       <Header />
       <SideBar />
-      <section>
+      <section className="content">
         <Outlet />
       </section>
+      <footer className="footer"></footer>
     </main>
   );
 };

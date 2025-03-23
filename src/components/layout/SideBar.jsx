@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 export const SideBar = () => {
   return (
-    <aside>
+    <aside className="menu">
       <h2>Challenge list</h2>
       <ol>
         <li>
@@ -16,7 +16,6 @@ export const SideBar = () => {
           </Link>
         </li>
         <li>
-          {" "}
           <Link
             to="/country-match-game"
             activeProps={{
